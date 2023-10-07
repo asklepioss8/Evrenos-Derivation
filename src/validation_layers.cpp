@@ -1,4 +1,5 @@
 #include "validation_layers.hpp"
+#include "utilities.hpp"
 
 #include <algorithm>
 #include <cctype>
@@ -31,6 +32,9 @@ void ValidationLayers::run()
     {
         std::cerr << "Error: " << e.what() << std::endl;
     }
+
+    preparsing();
+
 }
 
 void ValidationLayers::remove_white_spaces()
@@ -92,5 +96,44 @@ void ValidationLayers::validate_angle_brackets()
     }
     if (count != 0)
         throw std::runtime_error("Angle brackets are not balanced");
+}
+
+/* I need a parsing function that parses long string from predefined charOperators and charSeperators and puts each of the part (excluding seperators and operators) to a vector of string*/
+void ValidationLayers::preparsing()
+{
+    std::string tempString;
+    for (auto& c : inputStr)
+    {
+        if (std::find(charOperators.begin(), charOperators.end(), c) != charOperators.end())
+        {
+            if (!tempString.empty())
+            {
+                preparsedStr.push_back(tempString);
+            }
+            tempString.clear();
+            // preparsedStr.push_back(std::string(1, c));
+
+        }
+        else if (std::find(charSeperators.begin(), charSeperators.end(), c) != charSeperators.end())
+        {
+            if (!tempString.empty())
+            {
+                preparsedStr.push_back(tempString);
+            }
+            tempString.clear();
+            // preparsedStr.push_back(std::string(1, c));
+
+        }
+        else
+        {
+            tempString.push_back(c);
+        }
+    }
+    preparsedStr.push_back(tempString);
+
+    for (auto i : preparsedStr)
+    {
+        std::cout << i << " ";
+    }
 }
 

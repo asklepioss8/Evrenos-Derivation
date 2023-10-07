@@ -3,8 +3,9 @@
 
 int main()
 {
-    std::string testStr = "(((((1+2)*3)/4)-5)*6+{[7*8]/9}";
+    std::string testStr = "(((((x^var1+2*x)*3)/4sin(x*(sin(var1))))-5))*6+{[7*x*ln(x)*8]/9}";
     ValidationLayers test(testStr);
+
     
     return 0;
 }
