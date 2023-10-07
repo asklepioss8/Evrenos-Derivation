@@ -23,3 +23,10 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
 
 # set executable output directory to bin
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
+
+# add compiler settings /Qspectre
+# if (MSVC)
+#     target_compile_options(${PROJECT_NAME} PRIVATE /Qspectre)
+# endif()
+
+

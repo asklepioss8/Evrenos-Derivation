@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -23,6 +25,7 @@ public:
     void run();
 
     // -Getters
+    std::string get_inputStr() const { return inputStr; }
     // -Setters
 
 private:
@@ -40,6 +43,7 @@ private:
     void validate_brackets();
     void validate_braces();
     void validate_angle_brackets();
+    void validate_special_tokens();
 
     // Second ring validation Layers
     void preparsing();
